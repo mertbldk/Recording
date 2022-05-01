@@ -1,0 +1,50 @@
+/*Responsive*/
+
+/*XS*/
+@media only screen and (max-width: 575px){
+    /*Menu*/
+    #menuContainer{
+        #menuLogo{
+            margin-left: 3em;
+            p{
+                @include textFont($white,bold,1.3em);
+            }
+        }
+        #menuUser{
+            margin-right: 3em;
+            min-width: 9em;
+            max-width: 14em;
+        }
+    }
+    /*Recording*/
+    #recordingContainer{
+        #recordingCap{
+            #recordingRegister{
+                width: 80%;
+                form{
+                    #registerNameSurname,
+                    #registerGmail,
+                    #registerPassowrd{
+                        input{
+                            margin: 0 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /*Setting*/
+    #settingContainer{
+        #settingRegister{
+            width: 80%;
+            #settingNameSurname,
+            #settingGmail,
+            #settingPassowrd{
+                input{
+                    margin: 0 25px;
+                }
+            }
+            
+        }
+    }
+}

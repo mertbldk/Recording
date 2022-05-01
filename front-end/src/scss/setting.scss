@@ -1,0 +1,135 @@
+/*Varible*/
+$black : black;
+$white : white;
+$blueShadow : rgb(47, 130, 255);
+$blackShadow : rgba(248, 247, 247, 0.096);
+$redShadow : rgba(252, 52, 52, 0.959);
+$whiteShadow : rgba(255, 249, 249, 0.979);
+
+/*Mixin*/
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flexSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin flexSpaceEvenly {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+@mixin flexSpaceAround {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+@mixin textFont($color,$weight,$size) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+@mixin boderRadius($px){
+    border-radius: $px;
+    -webkit-border-radius: $px;
+    -moz-border-radius: $px;
+    -ms-border-radius: $px;
+    -o-border-radius: $px;
+}
+@mixin transition($ms,$value) {
+    transition: $ms $value;
+    -webkit-transition: $ms $value;
+    -moz-transition: $ms $value;
+    -ms-transition: $ms $value;
+    -o-transition: $ms $value;
+}
+
+#settingContainer{
+    @include flexCenter();
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    #recordingWarning{
+        @include flexSpaceEvenly();
+        width: 100%;
+        flex-direction: column;  
+    }
+    #warning{
+        @include boderRadius(10px 0 10px 0);
+        color: $white;
+        font-size: 1em;
+        padding: 15px;
+        margin: 40px 0;
+        box-shadow: 0 0 5px $black;
+    }
+    .blue{
+        background-color: $blueShadow;
+    }
+    .red{
+        background-color: $redShadow;
+    }
+    #settingRegister{
+        @include boderRadius(20px 0 20px 0);
+        @include flexSpaceEvenly();
+        background-color: $blueShadow;
+        width: 35em;
+        height: 30em;
+        box-shadow: 0 0 5px $black;
+        flex-direction: column;
+        #settingTitle{
+            @include flexCenter();
+            @include textFont($white,bold,2.5em);
+            width: 100%;
+            text-shadow: 0 0 5px $black;
+        }
+        #settingNameSurname,
+        #settingGmail,
+        #settingPassowrd{
+            @include flexSpaceEvenly();
+            width: 100%;
+            height: 3em;
+            input{
+                @include boderRadius(10px 0 10px 0);
+                outline: none;
+                width: 80%;
+                height: 3em;
+                padding: 10px;
+                border: 1px solid $white;
+                margin: 0 50px;
+                &:focus{
+                    box-shadow: 0 0 20px $black;
+                }
+            }
+        }
+        #settingSubmit{
+            @include boderRadius(10px 0 10px 0);
+            @include textFont($blueShadow,bold,1.5em);
+            @include transition(200ms, all);
+            width: 80%;
+            height: 2em;
+            border: 2px solid $white;
+            background-color: $white;
+            cursor: pointer;
+            &:hover{
+                background-color: $blueShadow;
+                color: $white;
+            }
+        }
+        #settingDelet{
+            @include boderRadius(10px 0 10px 0);
+            @include transition(200ms,box-shadow);
+            @include textFont($white,bold,1.5em);
+            width: 80%;
+            height: 2em;
+            border: 0;
+            background-color: $redShadow;
+            cursor: pointer;
+            &:hover{
+                box-shadow: 0 0 20px $redShadow;
+            }
+        }
+    }
+}

@@ -1,0 +1,184 @@
+/*Varible*/
+$black : black;
+$white : white;
+$blueShadow : rgb(47, 130, 255);
+$blackShadow : rgba(248, 247, 247, 0.096);
+$redShadow : rgba(252, 52, 52, 0.959);
+$whiteShadow : rgba(255, 249, 249, 0.979);
+
+/*Mixin*/
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flexSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin flexSpaceEvenly {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+@mixin flexSpaceAround {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+@mixin textFont($color,$weight,$size) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+@mixin boderRadius($px){
+    border-radius: $px;
+    -webkit-border-radius: $px;
+    -moz-border-radius: $px;
+    -ms-border-radius: $px;
+    -o-border-radius: $px;
+}
+@mixin transition($ms,$value) {
+    transition: $ms $value;
+    -webkit-transition: $ms $value;
+    -moz-transition: $ms $value;
+    -ms-transition: $ms $value;
+    -o-transition: $ms $value;
+}
+
+/*Code*/
+#menuContainer{
+    @include flexSpaceBetween();
+    background-color: $blueShadow ;
+    width: 100%;
+    height: 5em;
+    #menuLogo{
+        @include flexCenter();
+        margin-left: 5em;
+        p{
+            @include textFont($white,bold,1.5em);
+            font-variant: small-caps;
+            text-shadow: 0 0 5px $black;
+        }
+    }
+    #menuUser{
+        @include boderRadius(5px);
+        margin-right: 5em;
+        min-width: 10em;
+        max-width: 15em;
+        height: 3em;
+        box-shadow: 0 0 5px $black;
+        #userActive{
+            @include boderRadius(5px);
+            @include transition(200ms,all);
+            border: 2px solid $white;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            &:hover #userButton{
+                transform: rotate(180deg);
+                -webkit-transform: rotate(180deg);
+                -moz-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+            }
+            &:hover #userSettinQuit{
+                opacity: 1;
+                visibility: visible;
+            }
+            #userNameButton{
+                display: flex;
+                width: 100%;
+                height: 100%;
+                #userName{
+                    @include textFont($white,bold,0.9em);
+                    @include transition(200ms,background-color);
+                    text-align: center;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    line-height: 33px;
+                    padding: 5px;
+                    width: 73%;
+                    border-right: 1px solid $white;
+                    text-decoration: none;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: $blackShadow;
+                    }
+                }
+                #userButton{
+                    @include flexCenter();
+                    @include transition(200ms,transform);
+                    @include textFont($white,bold,1em);
+                    width: 27%;
+                    color: $white;
+                }
+            }
+            #userSettinQuit{
+                @include flexSpaceEvenly();
+                @include boderRadius(5px);
+                @include transition(200ms,all);
+                position: absolute;
+                left: 0;
+                top: 3em;
+                background-color: $blueShadow;
+                border: 2px solid $white;
+                flex-direction: column;
+                width: 100%;
+                height: 7em;
+                padding: 10px;
+                opacity: 0;
+                visibility: hidden;
+                box-shadow: 0 0 5px $black;
+                #userSetting{
+                    @include flexCenter();
+                    width: 100%;
+                    height: 50%;
+                    a{
+                        @include flexSpaceEvenly();
+                        @include textFont($white,bold,1.2em);
+                        width: 100%;
+                        text-decoration: none;
+                    }
+                }
+                #userQuit{
+                    @include flexCenter();
+                    width: 100%;
+                    height: 50%;
+                    button{
+                        @include textFont($white,bold,1em);
+                        @include transition(200ms,border-color);
+                        background-color: $redShadow;
+                        border: 0;
+                        outline: none;
+                        width: 80%;
+                        height: 80%;
+                        border: 2px solid $white;
+                        cursor: pointer;
+                        &:hover{
+                            border-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+        #userClosed{
+            @include flexCenter();
+            @include transition(200ms,all);
+            @include boderRadius(10px 0 10px 0);
+            @include textFont($blueShadow,bold,1.1em);
+            border: 2px solid $whiteShadow;
+            background-color: $whiteShadow;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            &:hover{
+                background-color: transparent;
+                color: $white;
+            }
+        }
+    }
+}
